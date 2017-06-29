@@ -19,6 +19,8 @@ public class NotesProvider extends ContentProvider{
 
     private static final UriMatcher uriMatcher=new UriMatcher(UriMatcher.NO_MATCH); //to chech which operation is requested
 
+    public static final String CONTENT_ITEM_TYPE=" Note ";
+
     static {
 
         uriMatcher.addURI(AUTHORITY,BASE_PATH,NOTES);
