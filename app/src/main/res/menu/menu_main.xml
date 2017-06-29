@@ -13,5 +13,9 @@
         android:orderInCategory="101"
         android:title="@string/delete_all_notes"
         android:showAsAction="never"/>
+    <item
+        android:title="About Us"
+        android:id="@+id/action_about"
+        android:orderInCategory="102" />
 
 </menu>

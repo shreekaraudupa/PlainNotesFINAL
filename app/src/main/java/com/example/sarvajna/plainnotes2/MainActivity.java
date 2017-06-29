@@ -12,12 +12,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -41,6 +43,15 @@ public class MainActivity extends AppCompatActivity
 
         getLoaderManager().initLoader(0,null,this);   //initialize my loader
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(MainActivity.this,EditorActivity.class);
+                Uri uri=Uri.parse(NotesProvider.CONTENT_URI + "/"+l);
+                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE,uri);
+                startActivityForResult(intent,EDITOR_REQUEST_CODE);
+            }
+        });
 
     }
 
@@ -61,12 +72,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id=item.getItemId();
+
         switch(id){
             case R.id.action_create_sample:
                 insertSampleData();
                 break;
             case R.id.action_delete_all:
                 deleteAllNotes();
+                break;
+            case R.id.action_about:
+               // Snackbar.make(this.findViewById(R.id.action_about),"Developed by Shree",Snackbar.LENGTH_LONG).show();
+                Toast.makeText(this,"Developed by shree",Toast.LENGTH_LONG).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -134,5 +150,39 @@ public class MainActivity extends AppCompatActivity
         if(requestCode==EDITOR_REQUEST_CODE&&resultCode==RESULT_OK){
             restartLoader();
         }
+
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setMessage("Do you want to close this application ?");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog alert=builder.create();
+        alert.setTitle("Exit");
+        alert.show();
+    }
+
+
 }
