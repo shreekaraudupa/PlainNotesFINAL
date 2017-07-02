@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -81,11 +82,25 @@ public class MainActivity extends AppCompatActivity
                 deleteAllNotes();
                 break;
             case R.id.action_about:
-               // Snackbar.make(this.findViewById(R.id.action_about),"Developed by Shree",Snackbar.LENGTH_LONG).show();
-                Toast.makeText(this,"Developed by shree",Toast.LENGTH_LONG).show();
+               //Snackbar.make(findViewById(R.id.activity_main),"Developed by Shree",Snackbar.LENGTH_LONG).show();
+                ShowSnackbar();
+                //Toast.makeText(this,"Developed by shree",Toast.LENGTH_LONG).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void ShowSnackbar() {
+        Snackbar snackbar=Snackbar.make(findViewById(R.id.activity_main),"This ",Snackbar.LENGTH_LONG);
+        snackbar.setAction("Like", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Thanks for Liking ",Toast.LENGTH_LONG).show();
+            }
+        });
+        snackbar.setActionTextColor(Color.GREEN);
+        snackbar.show();
+
     }
 
     private void deleteAllNotes() {
