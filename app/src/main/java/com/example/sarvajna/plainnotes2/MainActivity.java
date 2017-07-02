@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void ShowSnackbar() {
-        Snackbar snackbar=Snackbar.make(findViewById(R.id.activity_main),"This ",Snackbar.LENGTH_LONG);
+        Snackbar snackbar=Snackbar.make(findViewById(R.id.activity_main),"Developed by Shree ",Snackbar.LENGTH_LONG);
         snackbar.setAction("Like", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
