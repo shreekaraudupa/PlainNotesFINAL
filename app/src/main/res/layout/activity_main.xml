@@ -14,14 +14,16 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:clickable="true"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_action_add"
         android:layout_alignParentBottom="true"
-android:background="#123"
+android:background="#000"
+
         android:id="@+id/floatingActionButton"
+
         android:onClick="openEditorForNewNote"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
