@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlainNotes2</string>
+    <string name="app_name" >Simple Notes</string>
     <string name="create_sample_data">Create Sample Data</string>
     <string name="delete_all_notes">Delete all notes</string>
     <string name="are_you_sure">Are you sure ?</string>
