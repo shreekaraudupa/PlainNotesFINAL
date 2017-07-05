@@ -21,8 +21,8 @@ Runnig all the task on UIthread may cause some problems so we have to move it to
 Loader executes data operations on the background threads automatically.
 Hence implement the Loader interface from MainActivity
 
-	  class MainActivity extends AppCompatActivity
-    implements LoaderManager.LoaderCallbacks<Cursor>
+	class MainActivity extends AppCompatActivity
+	implements LoaderManager.LoaderCallbacks<Cursor>
 	
 To make the listView Better note_list_item.xml was created which has one ImageView and TextView .
 Then inorder to store multiLine texts and long texts we are using the inbuilt CursorAdapter class.
